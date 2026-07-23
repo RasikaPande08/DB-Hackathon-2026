@@ -1,0 +1,22 @@
+{
+  "employee": {
+    "id": "EMP-28491",
+    "firstName": "Rasika",
+    "lastName": "Mehta",
+    "department": "Global Markets",
+    "role": "Senior Analyst"
+  },
+  "summary": {
+    "greeting": "Good Morning Rasika",
+    "pendingActionsCount": 4,
+    "complianceScore": 94,
+    "suggestedAction": "Please complete your Information Security Training before 25 July and declare your pending trade within the next 48 hours."
+  },
+  "tradingDeclaration": {
+    "id": "itra-8842",
+    "status": "pending",
+    "priority": "high",
+    "transactionCount": 3,
+    "deadlineDaysRemaining": 2
+  }
+}
