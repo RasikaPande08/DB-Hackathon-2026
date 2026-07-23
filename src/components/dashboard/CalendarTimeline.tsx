@@ -20,7 +20,7 @@ export function CalendarTimeline({ events }: CalendarTimelineProps) {
       <SectionHeader
         icon={CalendarDays}
         title="Smart Calendar Timeline"
-        subtitle="Deadlines synced across ITRA, LMS, and personal dealing"
+        subtitle="Deadlines synced across ETRA, LMS, and personal dealing"
       />
       <GlassCard className="mt-6" hover={false}>
         <div className="relative ml-3 border-l-2 border-db-blue/30 pl-8 dark:border-blue-500/30">

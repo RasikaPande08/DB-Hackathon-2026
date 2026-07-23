@@ -69,7 +69,7 @@ export const mockDashboardResponse: DashboardData = {
     },
   ],
   tradingDeclaration: {
-    id: 'itra-8842',
+    id: 'ETRA-8842',
     status: 'pending',
     priority: 'high',
     transactionCount: 3,
@@ -116,7 +116,7 @@ export const mockDashboardResponse: DashboardData = {
     {
       id: 'n-1',
       title: 'Trading declaration pending',
-      message: 'Your quarterly ITRA declaration is overdue. Submit within 2 days.',
+      message: 'Your quarterly ETRA declaration is overdue. Submit within 2 days.',
       priority: 'high',
       timestamp: '2 hours ago',
       read: false,
@@ -225,7 +225,7 @@ export const mockDashboardResponse: DashboardData = {
     },
     {
       id: 'd-2',
-      title: 'ITRA Trading Declaration',
+      title: 'ETRA Trading Declaration',
       dueDate: '24 Jul 2026',
       daysLeft: 2,
       priority: 'high',

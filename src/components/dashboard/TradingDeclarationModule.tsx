@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { FileSignature } from 'lucide-react'
 import type { TradingDeclaration } from '../../types'
@@ -10,12 +11,22 @@ interface TradingDeclarationModuleProps {
 }
 
 export function TradingDeclarationModule({ declaration }: TradingDeclarationModuleProps) {
+  const [isRedirecting, setIsRedirecting] = useState(false)
+
+  const handleDeclareNow = () => {
+    setIsRedirecting(true)
+    window.setTimeout(() => {
+      window.open('https://www.db.com/', '_blank', 'noopener,noreferrer')
+      setIsRedirecting(false)
+    }, 350)
+  }
+
   return (
     <section id="trading" className="scroll-mt-24">
       <SectionHeader
         icon={FileSignature}
         title="Trading Declaration"
-        subtitle="ITRA — personal account dealing compliance"
+        subtitle="ETRA — personal account dealing compliance"
       />
       <GlassCard className="mt-6 max-w-2xl">
         <div className="flex flex-wrap items-start justify-between gap-4">
@@ -23,7 +34,7 @@ export function TradingDeclarationModule({ declaration }: TradingDeclarationModu
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
               Trading Declaration Pending
             </h3>
-            <p className="mt-1 text-sm text-slate-500">Synced from ITRA • Ref {declaration.id}</p>
+            <p className="mt-1 text-sm text-slate-500">Synced from ETRA • Ref {declaration.id}</p>
           </div>
           <PriorityBadge priority={declaration.priority} />
         </div>
@@ -50,9 +61,11 @@ export function TradingDeclarationModule({ declaration }: TradingDeclarationModu
 
         <button
           type="button"
-          className="mt-6 w-full rounded-xl bg-db-blue py-3 text-sm font-semibold text-white transition hover:bg-db-blue-light sm:w-auto sm:px-8 dark:bg-blue-600 dark:hover:bg-blue-500"
+          disabled={isRedirecting}
+          onClick={handleDeclareNow}
+          className="mt-6 w-full cursor-pointer rounded-xl bg-db-blue py-3 text-sm font-semibold text-white shadow-sm transition-all duration-300 hover:scale-[1.02] hover:bg-db-blue-light hover:shadow-lg active:scale-[0.98] disabled:cursor-wait disabled:opacity-70 disabled:hover:scale-100 sm:w-auto sm:px-8 dark:bg-blue-600 dark:hover:bg-blue-500"
         >
-          Declare Now
+          {isRedirecting ? 'Redirecting to Deutsche Bank Portal…' : 'Declare Now'}
         </button>
       </GlassCard>
     </section>

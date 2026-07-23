@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { BookOpen, Bell } from 'lucide-react'
 import type { Training } from '../../types'
@@ -28,6 +29,15 @@ export function TrainingTracker({ trainings }: TrainingTrackerProps) {
 
 function TrainingCard({ training, index }: { training: Training; index: number }) {
   const isComplete = training.status === 'completed'
+  const [redirecting, setRedirecting] = useState<'remind' | 'complete' | null>(null)
+
+  const handleRedirect = (which: 'remind' | 'complete') => {
+    setRedirecting(which)
+    window.setTimeout(() => {
+      window.open('https://www.db.com/', '_blank', 'noopener,noreferrer')
+      setRedirecting(null)
+    }, 350)
+  }
 
   return (
     <GlassCard transition={{ delay: index * 0.08 }}>
@@ -77,17 +87,20 @@ function TrainingCard({ training, index }: { training: Training; index: number }
       <div className="mt-6 flex items-center justify-between gap-3">
         <button
           type="button"
-          className="inline-flex items-center gap-2 text-xs text-slate-500 hover:text-db-blue dark:hover:text-blue-300"
+          disabled={redirecting === 'remind'}
+          onClick={() => handleRedirect('remind')}
+          className="inline-flex cursor-pointer items-center gap-2 text-xs text-slate-500 transition-colors duration-200 hover:text-db-blue disabled:cursor-wait disabled:opacity-70 dark:hover:text-blue-300"
         >
           <Bell className="h-3.5 w-3.5" />
-          Remind me
+          {redirecting === 'remind' ? 'Opening…' : 'Remind me'}
         </button>
         <button
           type="button"
-          disabled={isComplete}
-          className="rounded-xl bg-db-blue px-4 py-2 text-sm font-medium text-white transition hover:bg-db-blue-light disabled:cursor-not-allowed disabled:opacity-50 dark:bg-blue-600 dark:hover:bg-blue-500"
+          disabled={isComplete || redirecting === 'complete'}
+          onClick={() => handleRedirect('complete')}
+          className="cursor-pointer rounded-xl bg-db-blue px-4 py-2 text-sm font-medium text-white shadow-sm transition-all duration-300 hover:scale-105 hover:bg-db-blue-light hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 disabled:hover:shadow-sm dark:bg-blue-600 dark:hover:bg-blue-500"
         >
-          {isComplete ? 'Completed' : 'Complete Now'}
+          {isComplete ? 'Completed' : redirecting === 'complete' ? 'Redirecting…' : 'Complete Now'}
         </button>
       </div>
     </GlassCard>

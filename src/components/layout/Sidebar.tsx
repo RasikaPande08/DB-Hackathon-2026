@@ -22,8 +22,6 @@ const navItems: { id: NavSection; label: string; icon: typeof LayoutDashboard; h
   { id: 'trading', label: 'Trading Declarations', icon: FileSignature, href: '#trading' },
   { id: 'transactions', label: 'Transactions', icon: TrendingUp, href: '#transactions' },
   { id: 'compliance', label: 'Compliance', icon: Shield, href: '#compliance' },
-  { id: 'insights', label: 'AI Insights', icon: Bot, href: '#insights' },
-  { id: 'notifications', label: 'Notifications', icon: Bell, href: '#notifications' },
   { id: 'profile', label: 'Profile', icon: User, href: '#profile' },
   { id: 'settings', label: 'Settings', icon: Settings, href: '#settings' },
 ]

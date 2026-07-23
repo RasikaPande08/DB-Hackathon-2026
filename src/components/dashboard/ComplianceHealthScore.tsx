@@ -19,7 +19,7 @@ export function ComplianceHealthScore({ health }: ComplianceHealthScoreProps) {
       <SectionHeader
         icon={Shield}
         title="Compliance Health Score"
-        subtitle="Real-time posture across training, ITRA, and regulatory obligations"
+        subtitle="Real-time posture across training, ETRA, and regulatory obligations"
       />
       <GlassCard className="mt-6 overflow-hidden" hover={false}>
         <div className="grid gap-8 lg:grid-cols-[auto_1fr] lg:items-center">

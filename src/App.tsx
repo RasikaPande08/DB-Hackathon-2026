@@ -1,10 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
 import type { DashboardData, NavSection } from './types'
-import { AIInsights } from './components/dashboard/AIInsights'
 import { AnalyticsSection } from './components/dashboard/AnalyticsSection'
 import { DailyBriefing } from './components/dashboard/DailyBriefing'
 import { DailyPrompt } from './components/dashboard/DailyPrompt'
-import { NotificationCenter } from './components/dashboard/NotificationCenter'
 import { TradingDeclarationModule } from './components/dashboard/TradingDeclarationModule'
 import { TrainingTracker } from './components/dashboard/TrainingTracker'
 import { TransactionMonitoring } from './components/dashboard/TransactionMonitoring'
@@ -131,7 +129,7 @@ function DashboardLayout({
               <UpcomingDeadlines deadlines={data.upcomingDeadlines} />
             </div>
 
-            <AIInsights insights={data.insights} />
+
             <TrainingTracker trainings={data.trainings} />
             <TradingDeclarationModule declaration={data.tradingDeclaration} />
             <TransactionMonitoring transactions={data.transactions} />
@@ -140,7 +138,7 @@ function DashboardLayout({
               complianceScore={data.summary.complianceScore}
               productivityScore={data.summary.productivityScore}
             />
-            <NotificationCenter notifications={data.notifications} />
+
 
             <section id="profile" className="scroll-mt-24 grid gap-6 md:grid-cols-2">
               <ProfilePanel data={data} />
